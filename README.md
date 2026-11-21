@@ -16,12 +16,15 @@ price, and reports the products whose reference price is higher than that lowest
   the last 30 days (the period is configurable) is worked out in advance, with the gap from
   the crossed-out price and the day that lowest price leaves the period. Every page reads
   the ready figure: nothing is calculated while the customer waits.
-- **Storefront notice** — when a product shows a crossed-out price, customers see a short
-  note under it ("Lowest price in the last 30 days.") and the explanation on hover, in the
-  language of the store. No JavaScript, and one notice per product even when the page shows
-  the price more than once. The style is the module's own, so the notice looks the same on
-  every theme and updating the module never requires a theme rebuild.
-  
+- **Storefront notice** — everywhere a crossed-out price appears, customers see a short note
+  under it ("Lowest price in the last 30 days.") and the explanation on hover, in the
+  language of the store: product page, category and search results, widgets, related
+  products. No JavaScript, and one notice per product when the same page shows the price
+  more than once. The style is the module's own, so the notice looks the same on every
+  theme and updating the module never requires a theme rebuild.
+
+<img width="1920" height="937" alt="frontend-category" src="frontend-category.png" />
+
 <img width="1100" height="764" alt="frontend-tooltip" src="https://github.com/user-attachments/assets/13ee47eb-7c39-4bb2-b40f-8b3faf7feae5" />
 
 - **Admin** — a dashboard (`Catalog → Omnibus → Dashboard`) lists the products whose
