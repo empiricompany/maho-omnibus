@@ -22,8 +22,8 @@ price, and reports the products whose reference price is higher than that lowest
   products. No JavaScript, and one notice per product when the same page shows the price
   more than once. The style is the module's own, so the notice looks the same on every
   theme and updating the module never requires a theme rebuild.
-
-<img width="1920" height="937" alt="frontend-category" src="frontend-category.png" />
+  
+<img width="1920" height="937" alt="frontend-category" src="https://github.com/user-attachments/assets/12f8e959-bc83-4531-87ea-69ba56b54c51" />
 
 <img width="1100" height="764" alt="frontend-tooltip" src="https://github.com/user-attachments/assets/13ee47eb-7c39-4bb2-b40f-8b3faf7feae5" />
 
