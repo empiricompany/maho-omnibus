@@ -10,7 +10,7 @@ price, and reports the products whose reference price is higher than that lowest
   so the price you announce and the price you sold it at before stay distinguishable.
   Configurable products keep the price of each variant.
 
-  ![Omnibus price history grid](admin-history.png)
+<img width="1920" height="937" alt="admin-history" src="https://github.com/user-attachments/assets/91503258-aedd-412a-acf6-58d6e8e6c1e8" />
 
 - **Lowest price of the reference period** — for every product the lowest price applied in
   the last 30 days (the period is configurable) is worked out in advance, with the gap from
@@ -21,19 +21,17 @@ price, and reports the products whose reference price is higher than that lowest
   language of the store. No JavaScript, and one notice per product even when the page shows
   the price more than once. The style is the module's own, so the notice looks the same on
   every theme and updating the module never requires a theme rebuild.
-
-  ![Omnibus notice and its tooltip on the product page](frontend-tooltip.gif)
-
-  ![Notice next to the crossed-out price](frontend-notice.png)
+  
+<img width="1100" height="764" alt="frontend-tooltip" src="https://github.com/user-attachments/assets/13ee47eb-7c39-4bb2-b40f-8b3faf7feae5" />
 
 - **Admin** — a dashboard (`Catalog → Omnibus → Dashboard`) lists the products whose
   crossed-out price is higher than the lowest price of the period, the biggest gap first,
   with a one-click CSV/Excel export. The same history is available for the whole store and,
   as a tab, on the product you are editing, where a warning at the top shows the gap.
 
-  ![Omnibus compliance dashboard](admin-dashboard.png)
+<img width="1920" height="937" alt="admin-dashboard" src="https://github.com/user-attachments/assets/d8b9c497-2ee1-4a28-96e7-3bb1b61a03ce" />
 
-  ![Product edit: compliance warning and Omnibus History tab](admin-product-tab.png)
+<img width="1920" height="937" alt="admin-product-tab" src="https://github.com/user-attachments/assets/70374204-2630-4e50-a26f-b3503e2d676d" />
 
 - **Maho assistant** — the non-compliant products are available to the admin assistant, so
   you can ask which products do not comply and get the list, without opening a grid.
