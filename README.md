@@ -1,5 +1,12 @@
 # Omnibus Price Compliance for Maho
 
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/empiricompany/maho-omnibus.svg?style=flat-square)](https://packagist.org/packages/empiricompany/maho-omnibus)
+[![Total Downloads](https://img.shields.io/packagist/dt/empiricompany/maho-omnibus.svg?style=flat-square)](https://packagist.org/packages/empiricompany/maho-omnibus)
+![Maho Commerce](https://img.shields.io/badge/Maho_Commerce-module-orange)
+![License](https://img.shields.io/badge/license-OSL--3.0-blue)
+![PHP](https://img.shields.io/badge/php-%3E%3D8.5-8892BF)
+![PHPStan Level](https://img.shields.io/badge/PHPStan-level%208-brightgreen)
+
 EU Omnibus Directive (2019/2161) compliance: records the price history of every
 product save, shows the lowest price of the reference period next to a crossed-out
 price, and reports the products whose reference price is higher than that lowest price.
