@@ -1,8 +1,13 @@
 {
     "name": "empiricompany/maho-omnibus",
     "description": "EU Omnibus Directive (2019/2161) compliance for Maho: records the price history, shows the lowest price of the reference period next to a crossed-out price, and reports the products that do not comply.",
+    "keywords": ["maho", "omnibus", "price history", "compliance", "discount", "promotion"],
     "license": "OSL-3.0",
     "type": "maho-module",
+    "support": {
+        "issues": "https://github.com/empiricompany/maho-omnibus/issues",
+        "source": "https://github.com/empiricompany/maho-omnibus"
+    },
     "autoload": {
         "psr-4": {
             "MM\\Omnibus\\": "app/code/community/MM/Omnibus/"
