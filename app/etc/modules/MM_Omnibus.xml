@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+SPDX-FileCopyrightText: 2026 Tony MageMEGA <https://magemega.com>
+SPDX-License-Identifier: OSL-3.0
+-->
+<config>
+    <modules>
+        <MM_Omnibus>
+            <active>true</active>
+            <codePool>community</codePool>
+            <depends>
+                <Mage_Catalog/>
+                <Mage_CatalogRule/>
+                <Mage_Core/>
+                <Mage_Eav/>
+            </depends>
+        </MM_Omnibus>
+    </modules>
+</config>

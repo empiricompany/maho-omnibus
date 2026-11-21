@@ -1,0 +1,57 @@
+{
+    "name": "empiricompany/maho-omnibus",
+    "description": "EU Omnibus Directive (2019/2161) compliance for Maho: records the price history, shows the lowest price of the reference period next to a crossed-out price, and reports the products that do not comply.",
+    "license": "OSL-3.0",
+    "type": "maho-module",
+    "autoload": {
+        "psr-4": {
+            "MM\\Omnibus\\": "app/code/community/MM/Omnibus/"
+        }
+    },
+    "require": {
+        "php": ">=8.5"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "*",
+        "mahocommerce/maho": "*",
+        "mahocommerce/maho-phpstan-plugin": "*",
+        "pestphp/pest": "^5",
+        "phpstan/phpstan": "*",
+        "phpstan/phpstan-deprecation-rules": "*",
+        "phpstan/phpstan-strict-rules": "*",
+        "phpunit/phpunit": "*",
+        "rector/rector": "*"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "MM\\Omnibus\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "mahocommerce/maho-composer-plugin": true,
+            "pestphp/pest-plugin": true
+        },
+        "platform": {
+            "php": "8.5.12"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "scripts": {
+        "test": "vendor/bin/pest",
+        "test:db": "php tests/pest-with-test-db.php",
+        "lint": "find app tests -type f -name '*.php' -exec php -l {} +",
+        "cs": "vendor/bin/php-cs-fixer fix --dry-run --diff",
+        "cs-fix": "vendor/bin/php-cs-fixer fix",
+        "phpstan": "vendor/bin/phpstan analyze",
+        "rector": "vendor/bin/rector --dry-run",
+        "check": [
+            "@test",
+            "@lint",
+            "@cs",
+            "@phpstan",
+            "@rector"
+        ]
+    }
+}

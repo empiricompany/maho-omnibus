@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+<!--
+  Module stylesheet, served from the package skin directory: it does not belong to
+  the compiled theme bundle, so installing or updating the module never requires a
+  theme rebuild.
+
+  SPDX-FileCopyrightText: 2026 Tony MageMEGA <https://magemega.com>
+  SPDX-License-Identifier: OSL-3.0
+-->
+<layout version="0.1.0">
+    <default>
+        <reference name="head">
+            <action method="addCss">
+                <stylesheet>css/mm/omnibus.css</stylesheet>
+            </action>
+        </reference>
+    </default>
+</layout>

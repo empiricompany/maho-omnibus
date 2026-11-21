@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<!--
+SPDX-FileCopyrightText: 2026 Tony MageMEGA <https://magemega.com>
+SPDX-License-Identifier: OSL-3.0
+-->
+<config>
+    <menu>
+        <catalog>
+            <children>
+                <mm_omnibus translate="title" module="mm_omnibus">
+                    <title>Omnibus</title>
+                    <sort_order>100</sort_order>
+                    <children>
+                        <history translate="title" module="mm_omnibus">
+                            <title>Price History</title>
+                            <action>adminhtml/omnibus_history/index</action>
+                            <sort_order>10</sort_order>
+                        </history>
+                        <dashboard translate="title" module="mm_omnibus">
+                            <title>Dashboard</title>
+                            <action>adminhtml/omnibus_dashboard/index</action>
+                            <sort_order>20</sort_order>
+                        </dashboard>
+                    </children>
+                </mm_omnibus>
+            </children>
+        </catalog>
+    </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <catalog>
+                        <children>
+                            <mm_omnibus translate="title" module="mm_omnibus">
+                                <title>Omnibus</title>
+                                <sort_order>100</sort_order>
+                                <children>
+                                    <history translate="title" module="mm_omnibus">
+                                        <title>Price History</title>
+                                    </history>
+                                    <dashboard translate="title" module="mm_omnibus">
+                                        <title>Dashboard</title>
+                                    </dashboard>
+                                </children>
+                            </mm_omnibus>
+                        </children>
+                    </catalog>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <mm_omnibus translate="title" module="mm_omnibus">
+                                        <title>Omnibus</title>
+                                        <sort_order>100</sort_order>
+                                    </mm_omnibus>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

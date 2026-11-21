@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<!--
+SPDX-FileCopyrightText: 2026 Tony MageMEGA <https://magemega.com>
+SPDX-License-Identifier: OSL-3.0
+-->
+<layout version="0.1.0">
+    <adminhtml_omnibus_dashboard_index>
+        <reference name="content">
+            <block type="mm_omnibus/adminhtml_dashboard" name="dashboard" />
+        </reference>
+    </adminhtml_omnibus_dashboard_index>
+
+    <adminhtml_omnibus_dashboard_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="mm_omnibus/adminhtml_dashboard_grid" name="dashboard.grid" />
+        </block>
+    </adminhtml_omnibus_dashboard_grid>
+
+    <adminhtml_omnibus_history_index>
+        <reference name="content">
+            <block type="mm_omnibus/adminhtml_history" name="omnibus.history" />
+        </reference>
+    </adminhtml_omnibus_history_index>
+
+    <adminhtml_omnibus_history_grid>
+        <remove name="root" />
+        <block type="mm_omnibus/adminhtml_history_grid" name="omnibus.history.grid" output="toHtml" />
+    </adminhtml_omnibus_history_grid>
+
+    <adminhtml_omnibus_history_producttabgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="mm_omnibus/adminhtml_catalog_product_tab_omnibusHistory" name="omnibus.history.tab.grid" />
+        </block>
+    </adminhtml_omnibus_history_producttabgrid>
+
+    <adminhtml_catalog_product_new>
+        <reference name="product_tabs">
+            <action method="addTab">
+                <name>omnibus_history</name>
+                <block>mm_omnibus/adminhtml_catalog_product_tab_omnibusHistory</block>
+            </action>
+        </reference>
+    </adminhtml_catalog_product_new>
+
+    <adminhtml_catalog_product_edit>
+        <reference name="product_tabs">
+            <action method="addTab">
+                <name>omnibus_history</name>
+                <block>mm_omnibus/adminhtml_catalog_product_tab_omnibusHistory</block>
+            </action>
+        </reference>
+    </adminhtml_catalog_product_edit>
+</layout>

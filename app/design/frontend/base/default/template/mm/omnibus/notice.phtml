@@ -1,0 +1,32 @@
+<?php
+/**
+ * Omnibus price notice: the lowest price of the reference period next to a
+ * crossed-out price, with the explanation in a CSS-only tooltip.
+ *
+ * Styles come from the module stylesheet (`skin/frontend/base/default/css/mm/omnibus.css`),
+ * never from the compiled theme bundle, so any theme is supported and installing the
+ * module does not require a theme rebuild.
+ *
+ * SPDX-FileCopyrightText: 2026 Tony MageMEGA <https://magemega.com>
+ * SPDX-License-Identifier: OSL-3.0
+ *
+ * @var Mage_Core_Block_Template $this
+ */
+
+$period = (int) $this->getData('period');
+$text = (string) $this->getData('text');
+$tooltip = $this->__(
+    'The crossed-out price is the lowest price applied in the %d days preceding the price reduction.',
+    $period,
+);
+?>
+<span class="omnibus-price-notice">
+    <span class="omnibus-price-notice__text"><?= $this->escapeHtml($text) ?></span>
+    <span class="omnibus-price-notice__tooltip" data-tip="<?= $this->escapeHtml($tooltip) ?>">
+        <button type="button"
+                class="omnibus-price-notice__button"
+                aria-label="<?= $this->escapeHtml($this->__('More information about the lowest price')) ?>">
+            <?= $this->getIconSvg('info-circle') ?>
+        </button>
+    </span>
+</span>

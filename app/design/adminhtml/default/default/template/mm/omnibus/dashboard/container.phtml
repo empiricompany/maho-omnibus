@@ -1,0 +1,43 @@
+<?php
+/**
+ * Dashboard container: header, legend, website filter and grid.
+ *
+ * SPDX-FileCopyrightText: 2026 Tony MageMEGA <https://magemega.com>
+ * SPDX-License-Identifier: OSL-3.0
+ *
+ * @var MM_Omnibus_Block_Adminhtml_Dashboard $this
+ */
+
+$helper = Mage::helper('mm_omnibus');
+$isPriceGlobal = $helper->isPriceGlobal();
+$currentWebsite = $isPriceGlobal ? '' : (string) $this->getRequest()->getParam('website', '');
+$websites = $this->getWebsiteOptions();
+?>
+<div class="content-header">
+    <?= $this->getHeaderHtml() ?>
+</div>
+
+<?= $this->getChildHtml('legend') ?>
+
+<?php if (!$isPriceGlobal): ?>
+<form id="website-filter-form"
+      action="<?= $this->getUrl('*/*/*', ['_current' => true, 'website' => null]) ?>"
+      method="get">
+    <label for="website-select"><?= $helper->__('Website') ?></label>
+    <select name="website" id="website-select" onchange="this.form.submit();">
+        <option value=""><?= $helper->__('All Websites') ?></option>
+        <?php foreach ($websites as $websiteId => $websiteName): ?>
+            <option value="<?= (int) $websiteId ?>"<?= (string) $websiteId === $currentWebsite ? ' selected="selected"' : '' ?>>
+                <?= $this->escapeHtml($websiteName) ?>
+            </option>
+        <?php endforeach ?>
+    </select>
+    <noscript>
+        <button type="submit" class="button"><?= $helper->__('Filter') ?></button>
+    </noscript>
+</form>
+<?php endif ?>
+
+<div class="omnibus-grid">
+    <?= $this->getGridHtml() ?>
+</div>

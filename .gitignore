@@ -1,0 +1,12 @@
+/vendor/
+/app/etc/local.xml
+/app/etc/local.xml.backup
+/media/
+/public/
+/var/
+composer.lock
+.phpstan.cache/
+.phpunit.cache/
+.php-cs-fixer.cache
+.idea/
+.vscode/

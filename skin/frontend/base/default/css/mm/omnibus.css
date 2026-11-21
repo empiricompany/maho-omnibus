@@ -1,0 +1,119 @@
+/**
+ * Omnibus price notice.
+ *
+ * Self contained on purpose: no class of a compiled theme bundle is used, so the
+ * module renders the same way on any Maho theme and does not require a theme
+ * rebuild. Colors come from `currentColor`, the tooltip uses a neutral bubble
+ * that reads on light and dark backgrounds.
+ *
+ * SPDX-FileCopyrightText: 2026 Tony MageMEGA <https://magemega.com>
+ * SPDX-License-Identifier: OSL-3.0
+ */
+
+.omnibus-price-notice {
+    /* Default placement is after the price box, so these two lines are inert; they
+       only matter when the notice is configured inside the price element: the price
+       box of the storefront themes is a grid, spanning every column and keeping the
+       intrinsic width out of the track calculation (`contain: inline-size`) leaves
+       the crossed-out price and the discount badge where they already are. */
+    grid-column: 1 / -1;
+    contain: inline-size;
+
+    /* In the category card the price box sits in a flex column that reorders its
+       children (`order: 2`), so a notice appended after it would be displayed
+       before it. Mirroring that order keeps the notice under the price; a theme
+       that reorders the price box differently overrides the custom property. */
+    order: var(--omnibus-notice-order, 2);
+
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    margin-top: 0.25rem;
+    font-size: 0.75rem;
+    line-height: 1.4;
+    color: inherit;
+}
+
+.omnibus-price-notice__text {
+    min-width: 0;
+    /* The muted look is per child: an opacity on the wrapper would also fade the
+       tooltip bubble, letting the price show through. */
+    opacity: 0.7;
+}
+
+.omnibus-price-notice__tooltip {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    flex: none;
+}
+
+.omnibus-price-notice__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1rem;
+    height: 1rem;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    line-height: 1;
+    opacity: 0.7;
+    cursor: help;
+}
+
+/* The core icon ships as a 24px SVG: scale it down instead of touching the markup. */
+.omnibus-price-notice__button svg {
+    display: block;
+    width: 0.875rem;
+    height: 0.875rem;
+    flex: none;
+}
+
+.omnibus-price-notice__tooltip::after {
+    content: attr(data-tip);
+    position: absolute;
+    z-index: 30;
+    top: 50%;
+    right: calc(100% + 0.375rem);
+    transform: translateY(-50%);
+    width: max-content;
+    max-width: 15rem;
+    padding: 0.375rem 0.5rem;
+    border-radius: 0.25rem;
+    /* Opaque surface: the bubble overlaps the price markup and has to stay readable,
+       so nothing of the page shows through. The colors are the design tokens of the
+       compiled theme when it exposes them (Tailwind 4 / daisyUI), otherwise neutral
+       light values apply. */
+    background-color: #ffffff;
+    background-color: var(--color-base-100, #ffffff);
+    color: #111827;
+    color: var(--color-base-content, #111827);
+    border: 1px solid rgba(17, 24, 39, 0.16);
+    border-color: color-mix(in oklab, var(--color-base-content, #111827) 16%, transparent);
+    box-shadow: 0 4px 14px rgba(17, 24, 39, 0.16);
+    font-size: 0.6875rem;
+    font-weight: 400;
+    line-height: 1.35;
+    text-align: left;
+    text-transform: none;
+    letter-spacing: normal;
+    white-space: normal;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.15s ease-in-out;
+}
+
+.omnibus-price-notice__tooltip:hover::after,
+.omnibus-price-notice__tooltip:focus-within::after {
+    opacity: 1;
+    visibility: visible;
+}
+
+@media (max-width: 30rem) {
+    .omnibus-price-notice__tooltip::after {
+        max-width: 11rem;
+    }
+}

@@ -1,0 +1,119 @@
+<?xml version="1.0"?>
+<!--
+SPDX-FileCopyrightText: 2026 Tony MageMEGA <https://magemega.com>
+SPDX-License-Identifier: OSL-3.0
+-->
+<config>
+    <modules>
+        <MM_Omnibus>
+            <version>1.0.0</version>
+        </MM_Omnibus>
+    </modules>
+
+    <global>
+        <models>
+            <mm_omnibus>
+                <class>MM_Omnibus_Model</class>
+                <resourceModel>mm_omnibus_resource</resourceModel>
+            </mm_omnibus>
+            <mm_omnibus_resource>
+                <class>MM_Omnibus_Model_Resource</class>
+                <entities>
+                    <price_history>
+                        <table>omnibus_price_history</table>
+                    </price_history>
+                    <compliance_index>
+                        <table>omnibus_compliance_index</table>
+                    </compliance_index>
+                </entities>
+            </mm_omnibus_resource>
+        </models>
+
+        <helpers>
+            <mm_omnibus>
+                <class>MM_Omnibus_Helper</class>
+            </mm_omnibus>
+        </helpers>
+
+        <blocks>
+            <mm_omnibus>
+                <class>MM_Omnibus_Block</class>
+            </mm_omnibus>
+        </blocks>
+
+        <index>
+            <indexer>
+                <mm_omnibus_compliance>
+                    <model>mm_omnibus/indexer_compliance</model>
+                </mm_omnibus_compliance>
+            </indexer>
+        </index>
+    </global>
+
+    <frontend>
+        <translate>
+            <modules>
+                <MM_Omnibus>
+                    <files>
+                        <default>MM_Omnibus.csv</default>
+                    </files>
+                </MM_Omnibus>
+            </modules>
+        </translate>
+    </frontend>
+
+    <adminhtml>
+        <translate>
+            <modules>
+                <MM_Omnibus>
+                    <files>
+                        <default>MM_Omnibus.csv</default>
+                    </files>
+                </MM_Omnibus>
+            </modules>
+        </translate>
+        <layout>
+            <updates>
+                <mm_omnibus>
+                    <file>mm_omnibus.xml</file>
+                </mm_omnibus>
+            </updates>
+        </layout>
+    </adminhtml>
+
+    <frontend>
+        <layout>
+            <updates>
+                <mm_omnibus>
+                    <file>mm_omnibus.xml</file>
+                </mm_omnibus>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <MM_Omnibus>
+                    <files>
+                        <default>MM_Omnibus.csv</default>
+                    </files>
+                </MM_Omnibus>
+            </modules>
+        </translate>
+    </frontend>
+
+    <default>
+        <mm_omnibus>
+            <general>
+                <enabled>1</enabled>
+                <reference_period>30</reference_period>
+                <cleanup_days>90</cleanup_days>
+            </general>
+            <frontend>
+                <price_box_selector>.price-box</price_box_selector>
+                <notice_position>after</notice_position>
+            </frontend>
+            <debug>
+                <enabled>0</enabled>
+            </debug>
+        </mm_omnibus>
+    </default>
+</config>

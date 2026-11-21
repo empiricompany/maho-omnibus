@@ -1,0 +1,56 @@
+<?php
+/**
+ * Legend of the compliance dashboard, including when the index was last rebuilt.
+ *
+ * SPDX-FileCopyrightText: 2026 Tony MageMEGA <https://magemega.com>
+ * SPDX-License-Identifier: OSL-3.0
+ *
+ * @var Mage_Core_Block_Template $this
+ */
+
+$helper = Mage::helper('mm_omnibus');
+$period = (int) $helper->getReferencePeriod();
+$computedAt = $this->getData('computed_at');
+?>
+<div class="omnibus-legend box">
+    <strong><?= $this->__('Omnibus Directive (EU) 2019/2161') ?></strong>
+    <p>
+        <?= $this->__(
+            'When a product is on promotion, the crossed-out reference price must be no higher than the lowest price applied in the previous %d days.',
+            $period,
+        ) ?>
+    </p>
+
+    <p>
+        <?= $this->__(
+            'This dashboard lists the products whose reference price is higher than the lowest price recorded in the last %d days.',
+            $period,
+        ) ?>
+    </p>
+
+    <p>
+        <em><?= $this->__(
+            'Example: a product at 50 goes on sale at 35. If it was sold at 30 in the previous %d days, the base inflation is 20 until that record exits the %d-day window.',
+            $period,
+            $period,
+        ) ?></em>
+    </p>
+
+    <ul class="omnibus-legend-fields">
+        <li><strong><?= $this->__('Base Price') ?></strong>: <?= $this->__('the crossed-out reference price compared against the lowest historical price.') ?></li>
+        <li><strong><?= $this->__('Lowest Price (%dd)', $period) ?></strong>: <?= $this->__('the lowest effective price recorded in the reference period, excluding the active promotion.') ?></li>
+        <li><strong><?= $this->__('Lowest Price Date') ?></strong>: <?= $this->__('when the lowest price was recorded.') ?></li>
+        <li><strong><?= $this->__('Days Until Expiry') ?></strong>: <?= $this->__('how many days are left before that record exits the %d-day window.', $period) ?></li>
+        <li><strong><?= $this->__('Base Inflation') ?></strong>: <?= $this->__('the price increase over the lowest price; a positive value is a violation.') ?></li>
+        <li><strong><?= $this->__('Catalog price scope') ?></strong>: <?= $this->escapeHtml($helper->getPriceScopeLabel()) ?></li>
+    </ul>
+
+    <p class="omnibus-legend-freshness">
+        <?php if ($computedAt): ?>
+            <?= $this->__('Index last rebuilt: %s', $this->escapeHtml((string) $computedAt)) ?>
+            &mdash; <?= $this->__('rebuilt after every save and every day by cron.') ?>
+        <?php else: ?>
+            <?= $this->__('The index has never been built: run the "Omnibus Compliance" index from System > Index Management.') ?>
+        <?php endif ?>
+    </p>
+</div>
