@@ -1,0 +1,36 @@
+name: Release
+
+on:
+    push:
+        tags:
+            - '[0-9]*'   # plain semver, e.g. 1.0.0 (no "v" prefix)
+
+jobs:
+    release:
+        runs-on: ubuntu-latest
+        permissions:
+            contents: write
+        steps:
+            - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+
+            - name: Create release
+              uses: softprops/action-gh-release@v3
+              with:
+                  generate_release_notes: true
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+            # Generated notes only list merged PRs: prepend the annotated tag
+            # message, where features and BREAKING CHANGES belong. The tag is
+            # never moved.
+            - name: Prepend the annotated tag notes
+              env:
+                  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              run: |
+                  annotation="$(git for-each-ref --format='%(contents)' "refs/tags/${GITHUB_REF_NAME}")"
+                  if [ -z "${annotation}" ]; then
+                      echo "No annotated tag message: keeping the generated notes as-is."
+                      exit 0
+                  fi
+                  printf '%s\n\n%s\n' "${annotation}" "$(gh release view "${GITHUB_REF_NAME}" --json body -q .body)" > /tmp/release-notes.md
+                  gh release edit "${GITHUB_REF_NAME}" --notes-file /tmp/release-notes.md
