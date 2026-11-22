@@ -110,6 +110,7 @@ SPDX-License-Identifier: OSL-3.0
             <frontend>
                 <price_box_selector>.price-box</price_box_selector>
                 <notice_position>after</notice_position>
+                <show_lowest_price>0</show_lowest_price>
             </frontend>
             <debug>
                 <enabled>0</enabled>

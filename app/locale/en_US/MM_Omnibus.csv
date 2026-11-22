@@ -20,6 +20,7 @@
 "ID","ID"
 "Inside (default)","Inside (default)"
 "Lowest price in the last %d days.","Lowest price in the last %d days."
+"Lowest price in the last %d days: %s","Lowest price in the last %d days: %s"
 "Lowest Price (%dd)","Lowest Price (%dd)"
 "Lowest Price Date","Lowest Price Date"
 "N/A","N/A"

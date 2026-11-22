@@ -71,6 +71,25 @@ class MM_Omnibus_Model_Service_PriceCalculator
     }
 
     /**
+     * Regular price as the price box prints it: same currency conversion and same
+     * tax configuration, so the amount added to the notice coincides with the
+     * crossed-out price when the history has nothing cheaper to show.
+     */
+    public function getDisplayedReferencePrice(Mage_Catalog_Model_Product $product): float
+    {
+        $store = Mage::app()->getStore();
+        if (!$store instanceof Mage_Core_Model_Store) {
+            return 0.0;
+        }
+
+        $taxHelper = Mage::helper('tax');
+        $price = $store->roundPrice($store->convertPrice((float) $product->getPrice()));
+        $includeTax = $taxHelper->displayPriceIncludingTax() || $taxHelper->displayBothPrices();
+
+        return (float) $taxHelper->getPrice($product, $price, $includeTax);
+    }
+
+    /**
      * Whether the last catalog rule record of a product differs from the current
      * rule price.
      *

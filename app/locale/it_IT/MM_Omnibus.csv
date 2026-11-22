@@ -20,6 +20,7 @@
 "ID","ID"
 "Inside (default)","Dentro (predefinito)"
 "Lowest price in the last %d days.","Prezzo più basso ultimi %d giorni."
+"Lowest price in the last %d days: %s","Prezzo più basso ultimi %d giorni: %s"
 "Lowest Price (%dd)","Prezzo Minimo (%dg)"
 "Lowest Price Date","Data Prezzo Minimo"
 "N/A","N/D"

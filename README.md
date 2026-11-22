@@ -26,9 +26,11 @@ price, and reports the products whose reference price is higher than that lowest
 - **Storefront notice** — everywhere a crossed-out price appears, customers see a short note
   under it ("Lowest price in the last 30 days.") and the explanation on hover, in the
   language of the store: product page, category and search results, widgets, related
-  products. No JavaScript, and one notice per product when the same page shows the price
-  more than once. The style is the module's own, so the notice looks the same on every
-  theme and updating the module never requires a theme rebuild.
+  products. One setting, off by default, adds the amount to the note, in the currency of
+  the store view ("Lowest price in the last 30 days: 854,99 €"). No JavaScript, and one
+  notice per product when the same page shows the price more than once. The style is the
+  module's own, so the notice looks the same on every theme and updating the module never
+  requires a theme rebuild.
   
 <img width="1920" height="937" alt="frontend-category" src="https://github.com/user-attachments/assets/12f8e959-bc83-4531-87ea-69ba56b54c51" />
 
@@ -77,6 +79,7 @@ window):
 | History retention (days) | Rows older than this are removed by the nightly cron |
 | Price box selector | CSS selector of the price element (default `.price-box`) |
 | Notice position | `inside`, `before` or `after` the matched element (default `after`, outside the price box, so the crossed-out price and the discount badge keep their layout; `inside` uses the full price box row) |
+| Show the lowest price in the notice | Off by default. On, the note carries the amount as well ("Lowest price in the last 30 days: 854,99 €"): the lowest price of the window read from the compliance index (one query per listing, none when the setting is off), or the crossed-out price itself when the history has nothing cheaper |
 | Debug log | Writes the module decisions to `var/log/mm_omnibus.log` |
 
 ## When a product does not comply

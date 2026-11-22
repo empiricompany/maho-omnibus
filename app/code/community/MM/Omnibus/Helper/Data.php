@@ -15,6 +15,7 @@ class MM_Omnibus_Helper_Data extends Mage_Core_Helper_Abstract
     public const CONFIG_DEBUG_ENABLED = 'mm_omnibus/debug/enabled';
     public const CONFIG_PRICE_BOX_SELECTOR = 'mm_omnibus/frontend/price_box_selector';
     public const CONFIG_NOTICE_POSITION = 'mm_omnibus/frontend/notice_position';
+    public const CONFIG_SHOW_LOWEST_PRICE = 'mm_omnibus/frontend/show_lowest_price';
     public const LOG_FILE = 'mm_omnibus.log';
 
     public const POSITION_INSIDE = 'inside';
@@ -78,6 +79,16 @@ class MM_Omnibus_Helper_Data extends Mage_Core_Helper_Abstract
         $position = (string) Mage::getStoreConfig(self::CONFIG_NOTICE_POSITION, $storeId);
 
         return $position !== '' ? $position : self::POSITION_AFTER;
+    }
+
+    /**
+     * Whether the notice also carries the amount, e.g. "Lowest price in the last
+     * 30 days: 854,99 €". Off by default: the text alone is what the directive
+     * requires, and the amount costs one index read per product shown.
+     */
+    public function shouldShowLowestPrice(int|string|null $storeId = null): bool
+    {
+        return Mage::getStoreConfigFlag(self::CONFIG_SHOW_LOWEST_PRICE, $storeId);
     }
 
     public function isDebugEnabled(int|string|null $storeId = null): bool

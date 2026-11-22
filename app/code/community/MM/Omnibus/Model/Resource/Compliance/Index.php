@@ -11,10 +11,56 @@ declare(strict_types=1);
 
 class MM_Omnibus_Model_Resource_Compliance_Index extends Mage_Core_Model_Resource_Db_Abstract
 {
+    private const CHUNK_SIZE = 500;
+
     #[\Override]
     protected function _construct(): void
     {
         $this->_init('mm_omnibus/compliance_index', 'product_id');
+    }
+
+    /**
+     * Lowest price of the reference window for many products at once, keyed by
+     * product id. One select per chunk, so a listing never reads the index once
+     * per product.
+     *
+     * @param int[] $productIds
+     *
+     * @return array<int, float>
+     */
+    public function getLowestPricesByProductIds(array $productIds, ?int $websiteId = null): array
+    {
+        $ids = array_values(array_unique(array_filter(
+            array_map(intval(...), $productIds),
+            static fn(int $id): bool => $id > 0,
+        )));
+
+        if ($ids === []) {
+            return [];
+        }
+
+        $adapter = $this->getReadConnection();
+        $prices = [];
+
+        foreach (array_chunk($ids, self::CHUNK_SIZE) as $chunk) {
+            $select = $adapter->select()
+                ->from($this->getMainTable(), ['product_id', 'lowest_price'])
+                ->where('product_id IN (?)', $chunk);
+
+            if ($websiteId !== null) {
+                $select->where('website_id = ?', $websiteId);
+            }
+
+            foreach ($adapter->fetchAll($select) as $row) {
+                $productId = (int) $row['product_id'];
+                $price = (float) $row['lowest_price'];
+                $prices[$productId] = isset($prices[$productId])
+                    ? min($prices[$productId], $price)
+                    : $price;
+            }
+        }
+
+        return $prices;
     }
 
     /**

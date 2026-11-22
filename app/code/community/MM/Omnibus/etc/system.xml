@@ -72,6 +72,17 @@ SPDX-License-Identifier: OSL-3.0
                     <show_in_store>0</show_in_store>
 
                     <fields>
+                        <show_lowest_price translate="label comment">
+                            <label>Show the Lowest Price in the Notice</label>
+                            <comment>No (default) prints "Lowest price in the last 30 days."; Yes adds the amount in the store currency, e.g. "Lowest price in the last 30 days: 854,99 €": the lowest price of the window, or the crossed-out price when the history has nothing cheaper</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </show_lowest_price>
+
                         <price_box_selector translate="label comment">
                             <label>CSS Selector</label>
                             <comment>CSS selector of the price element the notice is placed next to (default: .price-box)</comment>
