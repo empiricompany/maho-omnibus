@@ -328,7 +328,9 @@ class MM_Omnibus_Block_Adminhtml_Catalog_Product_Tab_OmnibusHistory extends Mage
             return '';
         }
 
-        $difference = (float) $value;
+        // A currency frame callback receives the amount already formatted, so the
+        // stored value comes from the row.
+        $difference = (float) $row->getData('compliance_diff');
         if (abs($difference) < 0.0001) {
             return '';
         }

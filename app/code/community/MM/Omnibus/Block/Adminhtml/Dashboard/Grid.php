@@ -476,20 +476,21 @@ class MM_Omnibus_Block_Adminhtml_Dashboard_Grid extends Mage_Adminhtml_Block_Wid
         Mage_Adminhtml_Block_Widget_Grid_Column $column,
         bool $isExport = false,
     ): string {
-        if ($value === null || $value === '') {
+        // A frame callback receives the value already formatted by the datetime
+        // renderer, so the stored date comes from the row.
+        $expiresAt = $row->getData('expires_at');
+        if ($expiresAt === null || $expiresAt === '') {
             return Mage::helper('mm_omnibus')->__('N/A');
         }
 
-        $expiresAt = strtotime((string) $value);
-        if ($expiresAt === false) {
+        $timestamp = strtotime((string) $expiresAt);
+        if ($timestamp === false) {
             return Mage::helper('mm_omnibus')->__('N/A');
         }
 
-        $days = (int) floor(($expiresAt - time()) / 86400);
+        $days = (int) floor(($timestamp - time()) / 86400);
 
-        return $isExport
-            ? $days . ' ' . Mage::helper('mm_omnibus')->__('days')
-            : $days . ' ' . Mage::helper('mm_omnibus')->__('days');
+        return $days . ' ' . Mage::helper('mm_omnibus')->__('days');
     }
 
     public function decorateBaseInflation(
