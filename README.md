@@ -13,17 +13,17 @@ price, and reports the products whose reference price is higher than that lowest
 
 ## What it does
 
-- **Price history** — every time you save a product, the prices it had until then are kept,
+- **Price history**: every time you save a product, the prices it had until then are kept,
   so the price you announce and the price you sold it at before stay distinguishable.
   Configurable products keep the price of each variant.
 
 <img width="1920" height="937" alt="admin-history" src="https://github.com/user-attachments/assets/91503258-aedd-412a-acf6-58d6e8e6c1e8" />
 
-- **Lowest price of the reference period** — for every product the lowest price applied in
+- **Lowest price of the reference period**: for every product the lowest price applied in
   the last 30 days (the period is configurable) is worked out in advance, with the gap from
   the crossed-out price and the day that lowest price leaves the period. Every page reads
   the ready figure: nothing is calculated while the customer waits.
-- **Storefront notice** — everywhere a crossed-out price appears, customers see a short note
+- **Storefront notice**: everywhere a crossed-out price appears, customers see a short note
   under it ("Lowest price in the last 30 days.") and the explanation on hover, in the
   language of the store: product page, category and search results, widgets, related
   products. One setting, off by default, adds the amount to the note, in the currency of
@@ -36,7 +36,7 @@ price, and reports the products whose reference price is higher than that lowest
 
 <img width="1100" height="764" alt="frontend-tooltip" src="https://github.com/user-attachments/assets/13ee47eb-7c39-4bb2-b40f-8b3faf7feae5" />
 
-- **Admin** — a dashboard (`Catalog → Omnibus → Dashboard`) lists the products whose
+- **Admin**: a dashboard (`Catalog → Omnibus → Dashboard`) lists the products whose
   crossed-out price is higher than the lowest price of the period, the biggest gap first,
   with a one-click CSV/Excel export. The same history is available for the whole store and,
   as a tab, on the product you are editing, where a warning at the top shows the gap.
@@ -45,7 +45,7 @@ price, and reports the products whose reference price is higher than that lowest
 
 <img width="1920" height="937" alt="admin-product-tab" src="https://github.com/user-attachments/assets/70374204-2630-4e50-a26f-b3503e2d676d" />
 
-- **Maho assistant** — the non-compliant products are available to the admin assistant, so
+- **Maho assistant**: the non-compliant products are available to the admin assistant, so
   you can ask which products do not comply and get the list, without opening a grid.
 
 ## Requirements
@@ -121,7 +121,7 @@ The dashboard legend shows `computed_at`, so a stale index is visible instead of
 
 ## API
 
-`GET /omnibus/non-compliant-products` — requires the `catalog/mm_omnibus` ACL.
+`GET /omnibus/non-compliant-products` requires the `catalog/mm_omnibus` ACL.
 
 | Parameter | Meaning |
 | --- | --- |
