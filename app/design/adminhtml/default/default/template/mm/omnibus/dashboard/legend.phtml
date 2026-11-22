@@ -48,7 +48,7 @@ $computedAt = $this->getData('computed_at');
     <p class="omnibus-legend-freshness">
         <?php if ($computedAt): ?>
             <?= $this->__('Index last rebuilt: %s', $this->escapeHtml((string) $computedAt)) ?>
-            &mdash; <?= $this->__('rebuilt after every save and every day by cron.') ?>
+            (<?= $this->__('rebuilt after every save and every day by cron') ?>)
         <?php else: ?>
             <?= $this->__('The index has never been built: run the "Omnibus Compliance" index from System > Index Management.') ?>
         <?php endif ?>
