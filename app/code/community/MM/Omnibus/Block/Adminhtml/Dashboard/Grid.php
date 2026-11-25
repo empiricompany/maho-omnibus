@@ -51,7 +51,7 @@ class MM_Omnibus_Block_Adminhtml_Dashboard_Grid extends Mage_Adminhtml_Block_Wid
      * sort the user asked for inside each group.
      */
     #[\Override]
-    protected function _setCollectionOrder($column)
+    protected function _setCollectionOrder($column): static
     {
         $collection = $this->getCollection();
         if (!$collection || !$column) {
@@ -301,13 +301,12 @@ class MM_Omnibus_Block_Adminhtml_Dashboard_Grid extends Mage_Adminhtml_Block_Wid
     }
 
     #[\Override]
-    public function getRowUrl($row)
+    public function getRowUrl($row): string
     {
         $parentProductId = (int) $row->getData('parent_product_id');
+        $productId = $parentProductId > 0 ? $parentProductId : (int) $row->getData('entity_id');
 
-        return $this->getUrl('adminhtml/catalog_product/edit', [
-            'id' => $parentProductId > 0 ? $parentProductId : $row->getId(),
-        ]);
+        return $this->getUrl('adminhtml/catalog_product/edit', ['id' => $productId]);
     }
 
     #[\Override]

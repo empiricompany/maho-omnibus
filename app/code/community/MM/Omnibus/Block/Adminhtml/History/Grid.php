@@ -118,9 +118,9 @@ class MM_Omnibus_Block_Adminhtml_History_Grid extends Mage_Adminhtml_Block_Widge
     }
 
     #[\Override]
-    public function getRowUrl($row)
+    public function getRowUrl($row): string
     {
-        return $this->getUrl('adminhtml/catalog_product/edit', ['id' => $row->getProductId()]);
+        return $this->getUrl('adminhtml/catalog_product/edit', ['id' => (int) $row->getData('product_id')]);
     }
 
     #[\Override]
